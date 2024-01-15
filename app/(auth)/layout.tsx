@@ -9,7 +9,7 @@ const AuthLayout = (props: AuthLayoutProps) => {
   const { children } = props;
 
   return (
-    <div className="h-full flex items-center justify-center">
+    <div className="h-full flex flex-col items-center justify-center space-y-6">
       <Logo />
 
       {children}
