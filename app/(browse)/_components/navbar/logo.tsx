@@ -1,13 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Poppins } from "next/font/google";
 
 import { cn } from "@/lib/utils";
-
-const font = Poppins({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
+import { poppins } from "@/lib/fonts";
 
 export const Logo = () => {
   return (
@@ -17,7 +12,7 @@ export const Logo = () => {
           <Image src="/spooky.svg" alt="twitch-clone" height="32" width="32" />
         </div>
 
-        <div className={cn("hidden lg:block", font.className)}>
+        <div className={cn("hidden lg:block", poppins.className)}>
           <p className="text-lg font-semibold">Twitch Clone</p>
 
           <p className="text-xs text-muted-foreground">Let&apos;s play</p>
