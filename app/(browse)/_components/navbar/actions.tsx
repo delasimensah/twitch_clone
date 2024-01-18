@@ -8,16 +8,8 @@ export const Actions = async () => {
   const user = await currentUser();
 
   return (
-    <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0">
-      {!user && (
-        <SignInButton>
-          <Button size="sm" variant="primary">
-            Login
-          </Button>
-        </SignInButton>
-      )}
-
-      {!!user && (
+    <div className="flex items-center justify-end gap-x-2 ml-4 lg:ml-0 lg:w-44">
+      {user ? (
         <div className="flex items-center gap-x-4">
           <Button
             size="sm"
@@ -34,6 +26,12 @@ export const Actions = async () => {
 
           <UserButton afterSignOutUrl="/" />
         </div>
+      ) : (
+        <SignInButton>
+          <Button size="sm" variant="primary">
+            Login
+          </Button>
+        </SignInButton>
       )}
     </div>
   );
