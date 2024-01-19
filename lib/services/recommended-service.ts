@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { getSelf } from "@/services/auth-service";
+import { getSelf } from "@/lib/services/auth-service";
 
 export const getRecommended = async () => {
   const users = await db.user.findMany({
