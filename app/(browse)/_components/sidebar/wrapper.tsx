@@ -3,7 +3,11 @@
 import { ReactNode } from "react";
 import { useIsClient } from "usehooks-ts";
 
-import { ToggleSkeleton, RecommendedSkeleton } from "./skeletons";
+import {
+  ToggleSkeleton,
+  RecommendedSkeleton,
+  FollowingSkeleton,
+} from "./skeletons";
 
 import { useSidebar } from "@/hooks/store/use-sidebar";
 import { cn } from "@/lib/utils";
@@ -24,6 +28,7 @@ export const Wrapper = ({ children }: WrapperProps) => {
         }
       >
         <ToggleSkeleton />
+        <FollowingSkeleton />
         <RecommendedSkeleton />
       </aside>
     );
