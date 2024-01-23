@@ -39,7 +39,7 @@ export const isFollowingUser = async (id: string) => {
     const existingFollow = await db.follow.findFirst({
       where: {
         followerId: self.id,
-        followingId: otherUser.id,
+        followedId: otherUser.id,
       },
     });
 
@@ -67,7 +67,7 @@ export const followUser = async (id: string) => {
   const existingFollow = await db.follow.findFirst({
     where: {
       followerId: self.id,
-      followingId: otherUser.id,
+      followedId: otherUser.id,
     },
   });
 
@@ -78,7 +78,7 @@ export const followUser = async (id: string) => {
   const follow = await db.follow.create({
     data: {
       followerId: self.id,
-      followingId: otherUser.id,
+      followedId: otherUser.id,
     },
     include: {
       following: true,
@@ -109,7 +109,7 @@ export const unfollowUser = async (id: string) => {
   const existingFollow = await db.follow.findFirst({
     where: {
       followerId: self.id,
-      followingId: otherUser.id,
+      followedId: otherUser.id,
     },
   });
 

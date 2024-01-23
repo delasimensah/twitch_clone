@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 
 import "./globals.css";
 
@@ -29,6 +30,7 @@ const RootLayout = (props: RootLayoutProps) => {
             forcedTheme="dark"
             storageKey="twich-clone-theme"
           >
+            <Toaster theme="light" position="bottom-center" />
             {children}
           </ThemeProvider>
         </body>
