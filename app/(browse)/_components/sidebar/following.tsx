@@ -1,13 +1,15 @@
 "use client";
 
-import { Follow, Stream, User } from "@prisma/client";
+import { Follow, User } from "@prisma/client";
 
 import { UserItem } from "./user-item";
 
 import { useSidebar } from "@/hooks/store/use-sidebar";
 
 type FollowingProps = {
-  data: (Follow & { following: User & { stream: Stream | null } })[];
+  data: (Follow & {
+    following: User & { stream: { isLive: boolean } | null };
+  })[];
 };
 
 export const Following = ({ data }: FollowingProps) => {
