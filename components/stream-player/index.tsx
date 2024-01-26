@@ -6,6 +6,7 @@ import { LiveKitRoom } from "@livekit/components-react";
 import { Video } from "./video";
 import { Chat } from "./chat";
 import { ChatToggle } from "./chat-toggle";
+import { StreamPlayerSkeleton } from "./skeletons/stream-player-skeleton";
 
 import { useViewerToken } from "@/hooks/use-viewer-token";
 import { useChatSidebar } from "@/hooks/store/use-chat-sidebar";
@@ -26,7 +27,7 @@ export const StreamPlayer = (props: StreamPlayerProps) => {
   const { collapsed } = useChatSidebar((state) => state);
 
   if (!token || !name || !identity) {
-    return <div>Cannot watch the stream</div>;
+    return <StreamPlayerSkeleton />;
   }
 
   return (
