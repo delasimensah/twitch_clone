@@ -7,6 +7,7 @@ import { Video } from "./video";
 import { Chat } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { StreamPlayerSkeleton } from "./skeletons/stream-player-skeleton";
+import { Header } from "./header";
 
 import { useViewerToken } from "@/hooks/use-viewer-token";
 import { useChatSidebar } from "@/hooks/store/use-chat-sidebar";
@@ -48,6 +49,15 @@ export const StreamPlayer = (props: StreamPlayerProps) => {
       >
         <div className="space-y-4 col-span-1 lg:col-span-2 xl:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar pb-10">
           <Video hostName={user.username} hostIdentity={user.id} />
+
+          <Header
+            hostName={user.username}
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            imageUrl={user.imageUrl}
+            isFollowing={isFollowing}
+            name={stream.name}
+          />
         </div>
 
         <div className={cn("col-span-1", collapsed && "hidden")}>
