@@ -1,12 +1,12 @@
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  provider = "prisma-client-js"
+  // previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 // models
@@ -44,10 +44,10 @@ model Stream {
   user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
+  // @@fulltext([name])
 
   @@index([userId])
   @@index([ingressId])
-  @@fulltext([name])
 }
 
 model Follow {
