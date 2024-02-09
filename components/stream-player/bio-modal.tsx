@@ -1,7 +1,7 @@
 "use client";
 
-import { toast } from "sonner";
 import { useState, useTransition, useRef, ElementRef } from "react";
+import { toast } from "sonner";
 
 import {
   Dialog,
@@ -11,13 +11,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { updateUser } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-interface BioModalProps {
+import { updateUser } from "@/actions/user";
+
+type BioModalProps = {
   initialValue: string | null;
-}
+};
 
 export const BioModal = ({ initialValue }: BioModalProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
@@ -45,10 +46,12 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
           Edit
         </Button>
       </DialogTrigger>
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edit user bio</DialogTitle>
         </DialogHeader>
+
         <form onSubmit={onSubmit} className="space-y-4">
           <Textarea
             placeholder="User bio"
@@ -57,12 +60,14 @@ export const BioModal = ({ initialValue }: BioModalProps) => {
             disabled={isPending}
             className="resize-none"
           />
+
           <div className="flex justify-between">
             <DialogClose ref={closeRef} asChild>
               <Button type="button" variant="ghost">
                 Cancel
               </Button>
             </DialogClose>
+
             <Button disabled={isPending} type="submit" variant="primary">
               Save
             </Button>

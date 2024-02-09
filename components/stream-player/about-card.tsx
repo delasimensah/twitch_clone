@@ -4,21 +4,18 @@ import { VerifiedMark } from "@/components/verified-mark";
 
 import { BioModal } from "./bio-modal";
 
-interface AboutCardProps {
+type AboutCardProps = {
   hostName: string;
   hostIdentity: string;
   viewerIdentity: string;
   bio: string | null;
   followedByCount: number;
-}
+};
 
-export const AboutCard = ({
-  hostName,
-  hostIdentity,
-  viewerIdentity,
-  bio,
-  followedByCount,
-}: AboutCardProps) => {
+export const AboutCard = (props: AboutCardProps) => {
+  const { hostName, hostIdentity, viewerIdentity, bio, followedByCount } =
+    props;
+
   const hostAsViewer = `host-${hostIdentity}`;
   const isHost = viewerIdentity === hostAsViewer;
 
