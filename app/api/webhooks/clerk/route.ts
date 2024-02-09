@@ -80,15 +80,15 @@ export async function POST(req: Request) {
     });
   }
 
-  // if (eventType === "user.deleted") {
-  //   await resetIngresses(payload.data.id);
+  if (eventType === "user.deleted") {
+    await resetIngresses(payload.data.id);
 
-  //   await db.user.delete({
-  //     where: {
-  //       externalUserId: payload.data.id,
-  //     },
-  //   });
-  // }
+    await db.user.delete({
+      where: {
+        externalUserId: payload.data.id,
+      },
+    });
+  }
 
   return new Response("", { status: 200 });
 }
