@@ -8,6 +8,7 @@ import { Chat } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { StreamPlayerSkeleton } from "./skeletons/stream-player-skeleton";
 import { Header } from "./header";
+import { InfoCard } from "./info-card";
 
 import { useViewerToken } from "@/hooks/use-viewer-token";
 import { useChatSidebar } from "@/hooks/store/use-chat-sidebar";
@@ -57,6 +58,13 @@ export const StreamPlayer = (props: StreamPlayerProps) => {
             imageUrl={user.imageUrl}
             isFollowing={isFollowing}
             name={stream.name}
+          />
+
+          <InfoCard
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            name={stream.name}
+            thumbnailUrl={stream.thumbnailUrl}
           />
         </div>
 
