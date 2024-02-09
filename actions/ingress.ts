@@ -44,6 +44,8 @@ export const resetIngresses = async (hostIdentity: string) => {
 export const createIngress = async (ingressType: IngressInput) => {
   const self = await getSelf();
 
+  console.log({ self });
+
   await resetIngresses(self.id);
 
   const options: CreateIngressOptions = {
@@ -53,9 +55,12 @@ export const createIngress = async (ingressType: IngressInput) => {
     participantIdentity: self.id,
   };
 
+  console.log({ options });
+
   if (ingressType === IngressInput.WHIP_INPUT) {
     options.bypassTranscoding = true;
   } else {
+    console.log({ ingressType });
     options.video = {
       source: TrackSource.CAMERA,
       preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
@@ -68,6 +73,8 @@ export const createIngress = async (ingressType: IngressInput) => {
   }
 
   const ingress = await ingressClient.createIngress(ingressType, options);
+
+  console.log({ ingress });
 
   if (!ingress || !ingress.url || !ingress.streamKey) {
     throw new Error("Failed to create ingress");
